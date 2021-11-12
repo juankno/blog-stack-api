@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Posts\PostResource;
+use App\Http\Resources\Posts\PostCollection;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return new PostCollection(Post::with('author')->paginate(10));
     }
 
     /**
@@ -36,7 +38,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        PostResource::withoutWrapping();
+        return new PostResource($post);
     }
 
     /**

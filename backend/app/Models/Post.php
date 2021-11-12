@@ -13,7 +13,7 @@ class Post extends Model
     protected $fillable = ['title', 'extract', 'content', 'user_id'];
 
 
-    public function user()
+    public function author()
     {
         return $this->belongsTo(User::class);
     }
