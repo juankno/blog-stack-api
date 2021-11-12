@@ -12,11 +12,12 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\Posts\PostCollection
      */
     public function index()
     {
         return new PostCollection(Post::with('author')->paginate(10));
+        // return new PostCollection();
     }
 
     /**
@@ -34,7 +35,7 @@ class PostController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
+     * @return \App\Http\Resources\Posts\PostResource
      */
     public function show(Post $post)
     {
@@ -62,6 +63,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return response()->nocontent();
     }
 }

@@ -14,6 +14,6 @@ class PostCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return PostResource::collection($request);
+        return PostResource::collection($this->collection);
     }
 }
