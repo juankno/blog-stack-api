@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PostFactory extends Factory
@@ -14,7 +15,10 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->title,
+            'extract' => $this->faker->paragraph,
+            'content' => $this->faker->paragraph,
+            'user_id' => User::factory(),
         ];
     }
 }
