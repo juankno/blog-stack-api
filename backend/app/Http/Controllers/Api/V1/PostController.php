@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Controllers\Controller;
 use App\Http\Resources\Posts\PostResource;
 use App\Http\Resources\Posts\PostCollection;
 use App\Models\Post;
