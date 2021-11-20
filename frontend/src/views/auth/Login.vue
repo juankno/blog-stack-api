@@ -1,5 +1,6 @@
 <template>
-  <div>
+ <div class="container mx-auto">
+
     <h3>login</h3>
     <p v-if="loading">Loading...</p>
     <p v-if="error" style="color: red">{{ error }}</p>

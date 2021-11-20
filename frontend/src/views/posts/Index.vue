@@ -29,7 +29,7 @@ export default {
       const { data } = await repository.getPosts()
       this.posts = data
     } catch (error) {
-      this.error = error
+      this.error = error.response.data ?? error
     }
   }
 }

@@ -1,3 +1,5 @@
 module.exports = {
-  plugins: [require('tailwindcss')('tailwind.js'), require('autoprefixer')()]
+  plugins: [
+    require('tailwindcss')('tailwind.js'), require('autoprefixer')(), require('@tailwindcss/forms')
+  ]
 }
