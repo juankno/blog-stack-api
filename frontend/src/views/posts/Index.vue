@@ -1,12 +1,9 @@
 <template>
   <div>
-    <h2>posts:</h2>
     <p v-if="error" style="color: red">{{ error }}</p>
     <div v-if="posts" class="posts-wrapper">
-      <div v-for="(post, index) in posts" :key="index" class="post">
-        <h3>{{ post.title }}</h3>
-        <h5>{{ post.extract }}</h5>
-        <p>{{ post.content }}</p>
+     <div class="grid grid-cols-2 gap-4">
+        <post-item v-for="post in posts" :key="post.id" :post="post"></post-item>
       </div>
     </div>
     <p v-if="loading">Loading...</p>
@@ -15,8 +12,10 @@
 
 <script>
 import repository from '@/api/repository'
+import PostItem from '@/components/PostItem'
 export default {
   name: 'posts-index',
+  components: { PostItem },
   data () {
     return {
       posts: null,
@@ -27,7 +26,8 @@ export default {
   async mounted () {
     try {
       const { data } = await repository.getPosts()
-      this.posts = data
+      console.log(data)
+      this.posts = data.data
     } catch (error) {
       this.error = error.response.data ?? error
     }
