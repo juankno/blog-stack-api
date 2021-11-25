@@ -1,7 +1,5 @@
 <template>
-  <!-- component -->
-
-    <div
+ <div
       class="
         relative
         flex flex-col
