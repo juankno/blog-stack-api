@@ -5,6 +5,12 @@ import middleware from './middleware'
 
 export default [
   {
+    path: '/',
+    name: 'login',
+    component: Login,
+    beforeEnter: middleware.guest
+  },
+  {
     path: '/login',
     name: 'login',
     component: Login,
