@@ -8,7 +8,7 @@ export default new Vuex.Store({
   modules: {
     auth: {
       state: () => ({
-        user: sessionStorage.user ? JSON.parse(sessionStorage.getItem('user')) : null
+        user: localStorage.user ? JSON.parse(localStorage.getItem('user')) : null
       }),
 
       getters: {
@@ -26,13 +26,13 @@ export default new Vuex.Store({
           const { data } = await respository.login(user)
           commit('SET_USER', data)
 
-          sessionStorage.user = JSON.stringify(data)
+          localStorage.user = JSON.stringify(data)
         },
 
         async logout ({ commit }) {
           await respository.logout()
           commit('SET_USER', null)
-          sessionStorage.removeItem('user')
+          localStorage.removeItem('user')
         }
       }
     }
