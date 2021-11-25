@@ -8,7 +8,7 @@ export default new Vuex.Store({
   modules: {
     auth: {
       state: () => ({
-        user: null
+        user: sessionStorage.user ? JSON.parse(sessionStorage.getItem('user')) : null
       }),
 
       getters: {
@@ -25,6 +25,8 @@ export default new Vuex.Store({
           await respository.createSession()
           const { data } = await respository.login(user)
           commit('SET_USER', data)
+
+          sessionStorage.user = JSON.stringify(data)
         }
       }
     }
