@@ -37,8 +37,9 @@
         <div class="hidden sm:block sm:ml-6">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <router-link  v-if="authenticated" :to="{name:'posts'}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-mediumm">Posts</router-link>
+            <router-link  v-if="authenticated" :to="{name:'posts'}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Posts</router-link>
             <router-link  v-if="!authenticated" :to="{name:'login'}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login</router-link>
+            <button  v-if="authenticated" @click.prevent="logout"  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Logout</button>
           </div>
         </div>
       </div>
@@ -101,10 +102,25 @@
 <script>
 export default {
   name: 'HeaderComponent',
+  data () {
+    return {
+      error: null
+    }
+  },
   props: {
     authenticated: {
       type: Boolean,
       required: true
+    }
+  },
+  methods: {
+    async logout () {
+      try {
+        await this.$store.dispatch('logout')
+        await this.$router.push({ name: 'login' })
+      } catch (e) {
+        this.error = e
+      }
     }
   }
 }

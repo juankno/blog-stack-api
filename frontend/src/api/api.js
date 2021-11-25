@@ -13,6 +13,11 @@ instance.interceptors.request.use(request => {
 instance.interceptors.response.use(response => {
   return response
 }, error => {
+  if (error.response.status === 401) {
+    sessionStorage.removeItem('user')
+    window.location.reload()
+  }
+
   return Promise.reject(error)
 })
 

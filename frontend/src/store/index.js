@@ -27,6 +27,12 @@ export default new Vuex.Store({
           commit('SET_USER', data)
 
           sessionStorage.user = JSON.stringify(data)
+        },
+
+        async logout ({ commit }) {
+          await respository.logout()
+          commit('SET_USER', null)
+          sessionStorage.removeItem('user')
         }
       }
     }
