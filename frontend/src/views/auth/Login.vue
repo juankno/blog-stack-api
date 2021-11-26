@@ -22,7 +22,7 @@
           Sign in to your account
         </h2>
       </div>
-      <form class="mt-8 space-y-6" action="#" method="POST">
+      <form class="mt-8 space-y-6" @submit.prevent="login">
         <input type="hidden" name="remember" value="true" />
         <div class="rounded-md shadow-sm -space-y-px">
           <div>
@@ -121,7 +121,6 @@
         <div>
           <button
             type="submit"
-            @click.prevent="login"
             class="
               group
               relative
