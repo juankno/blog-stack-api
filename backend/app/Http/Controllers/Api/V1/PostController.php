@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Posts\PostResource;
-use App\Http\Resources\Posts\PostCollection;
+use App\Http\Resources\PostResource;
+use App\Http\Resources\PostCollection;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
